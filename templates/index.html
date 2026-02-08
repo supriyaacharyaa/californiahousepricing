@@ -4,126 +4,167 @@
     <meta charset="UTF-8">
     <title>California House Price Prediction</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* RESET & BASE */
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #cdd0da, #21054e);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-            padding: 20px;
-        }
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #cdd0da, #21054e);
+    min-height: 100vh;
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .container {
-            background: #ffffff;
-            width: 100%;
-            max-width: 520px;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
+/* MAIN CONTAINER */
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-            color: #333;
-        }
+/* HEADINGS */
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: clamp(20px, 5vw, 26px);
+}
 
-        p {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 25px;
-        }
+p {
+    text-align: center;
+    font-size: clamp(13px, 3.5vw, 14px);
+    color: #666;
+    margin-bottom: 22px;
+}
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+/* FORM */
+.form-group {
+    margin-bottom: 14px;
+}
 
-        label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #444;
-            display: block;
-            margin-bottom: 6px;
-        }
+label {
+    font-size: clamp(13px, 3.5vw, 14px);
+    font-weight: 600;
+    color: #444;
+    display: block;
+    margin-bottom: 6px;
+}
 
-        input {
-            width: 100%;
-            padding: 10px 12px;
-            font-size: 14px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            outline: none;
-            transition: border-color 0.2s;
-        }
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: clamp(14px, 4vw, 15px);
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border-color 0.2s;
+}
 
-        input:focus {
-            border-color: #667eea;
-        }
+input:focus {
+    border-color: #667eea;
+}
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #667eea;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            margin-top: 10px;
-        }
+/* BUTTONS */
+button {
+    width: 100%;
+    padding: 14px;
+    background: #667eea;
+    border: none;
+    color: #fff;
+    font-size: clamp(15px, 4vw, 16px);
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-top: 10px;
+}
 
-        button:hover {
-            background: #5a67d8;
-        }
+button:hover {
+    background: #5a67d8;
+}
 
-        .clear-btn {
-            background: #aaa;
-        }
+.clear-btn {
+    background: #aaa;
+}
 
-        .clear-btn:hover {
-            background: #888;
-        }
+.clear-btn:hover {
+    background: #888;
+}
 
-        .result {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f4f6ff;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
+/* RESULT */
+.result {
+    margin-bottom: 18px;
+    padding: 14px;
+    background: #f4f6ff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: clamp(14px, 4vw, 16px);
+    font-weight: bold;
+    color: #333;
+    word-wrap: break-word;
+}
 
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: #aaa;
-            margin-top: 20px;
-        }
+/* FOOTER */
+footer {
+    text-align: center;
+    font-size: clamp(11px, 3vw, 12px);
+    color: #aaa;
+    margin-top: 18px;
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
+/* =========================
+   SMALL MOBILE DEVICES
+   (≤ 360px)
+========================= */
+@media (max-width: 360px) {
+    body {
+        padding: 10px;
+    }
 
-            input, button {
-                font-size: 14px;
-            }
+    .container {
+        padding: 18px;
+        border-radius: 12px;
+    }
 
-            .result {
-                font-size: 15px;
-            }
-        }
-    </style>
+    input {
+        padding: 10px;
+    }
+
+    button {
+        padding: 12px;
+    }
+}
+
+/* =========================
+   TABLETS
+   (≥ 600px)
+========================= */
+@media (min-width: 600px) {
+    .container {
+        padding: 32px;
+    }
+}
+
+/* =========================
+   DESKTOPS
+   (≥ 992px)
+========================= */
+@media (min-width: 992px) {
+    .container {
+        max-width: 560px;
+    }
+}
+</style>
 </head>
 <body>
 
